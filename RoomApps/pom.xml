@@ -2,12 +2,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.juhn</groupId>
+	
+	<parent>
+		<groupId>net.juhn</groupId>
+		<artifactId>RoomApps</artifactId>
+		<version>1.0</version>
+	</parent>
+	
+	<groupId>net.juhn.roomapps</groupId>
 	<artifactId>RoomApps</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${revision}</version>
 	<packaging>pom</packaging>
+	
 	<properties>
 		<java.version>11</java.version>
+		<revision>2.5.0-SNAPSHOT</revision>
 	</properties>
 	<build>
 		<plugins>
