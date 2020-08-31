@@ -16,7 +16,7 @@
 	
 	<properties>
 		<java.version>11</java.version>
-		<revision>2.5.0-SNAPSHOT</revision>
+		<revision>1.0</revision>
 	</properties>
 	<build>
 		<plugins>
