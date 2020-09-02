@@ -13,7 +13,7 @@
 
 	<dependencies>
 		<dependency>
-			<artifactId>roomService</artifactId>
+			<artifactId>RoomService</artifactId>
 			<groupId>net.juhn.roomapps</groupId>
 			<!-- <version>${revision}</version> -->
 			<version>1.0</version>
@@ -72,6 +72,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.3.3.RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>
