@@ -9,7 +9,7 @@
 		<!-- <version>${revision}</version> -->
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>RoomObserver</artifactId>
+	<artifactId>RoomWorker</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>

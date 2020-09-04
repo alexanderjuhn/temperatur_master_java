@@ -31,5 +31,6 @@
 	<modules>
 		<module>RoomService</module>
 		<module>RoomObserver</module>
+		<module>RoomWorker</module>
 	</modules>
 </project>
