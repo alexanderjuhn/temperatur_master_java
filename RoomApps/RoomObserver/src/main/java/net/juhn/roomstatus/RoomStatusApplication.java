@@ -11,6 +11,6 @@ public class RoomStatusApplication {
     	SpringApplication springApplication = new SpringApplication(RoomStatusApplication.class);
     	springApplication.addListeners(new ApplicationPidFileWriter());
         springApplication.run(args);
-    }
+    } 
 
 }
