@@ -1,30 +1,22 @@
-package net.juhn.roomstatus.controller;
+package net.juhn.roomobserver.controller;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.juhn.roomstatus.EnumRoomData;
-import net.juhn.roomstatus.model.room.RoomData;
-import net.juhn.roomstatus.repository.RoomDataRepository;
 import net.juhn.roomstatus.service.ServiceRoom;
 
 
 @RestController
 public class RoomStatusUpdateController {
-
-    @Autowired
-    private RoomDataRepository roomDataRepository;
     
     @Autowired
     private ServiceRoom serviceRoom;
@@ -47,13 +39,6 @@ public class RoomStatusUpdateController {
         serviceRoom.updateRoom(roomName, temperature, humidity, dateRecorded);
         
         return "";
-    }
-
-    @GetMapping("/getRoomStatus")
-    public String getRoomStatus() {
-        List<RoomData> test = new ArrayList<RoomData>();
-        roomDataRepository.findAll().forEach(test::add);;
-        return test.toString();
     }
     
     private Timestamp formatDate(String recordDate, String recordTime) {

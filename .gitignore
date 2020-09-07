@@ -4,3 +4,7 @@ RoomApps/RoomService/.settings/
 RoomApps/RoomWorker/.classpath
 RoomApps/RoomWorker/.project
 *.pid
+RoomApps/RoomStatus/.classpath
+RoomApps/RoomStatus/.project
+RoomApps/RoomStatus/.settings/
+RoomApps/RoomStatus/target/

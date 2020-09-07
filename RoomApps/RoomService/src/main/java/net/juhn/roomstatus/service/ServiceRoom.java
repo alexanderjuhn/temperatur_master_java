@@ -22,6 +22,8 @@ import net.juhn.roomstatus.repository.RoomRepository;
  */
 @Component
 public class ServiceRoom {
+	
+	final int DAYS_TO_KEEP_DATA = 1;
 
 	@Autowired
 	private RoomRepository roomRepository;
@@ -65,13 +67,23 @@ public class ServiceRoom {
 		}
 	}
 
+	/**
+	 * Delete room data that is older then a certain amount of days.
+	 */
 	public void cleanRoom() {
 		List<RoomData> roomData = roomDataRepository.findAll();
 
 		roomData.stream()
 		.filter(rd -> rd.getDatecreated()
 				.before(Timestamp.from(Instant.now()
-						.minus(1, ChronoUnit.DAYS))))
+						.minus(DAYS_TO_KEEP_DATA, ChronoUnit.DAYS))))
 		.forEach(rd -> roomDataRepository.delete(rd));
+	}
+	
+	public String getRoomStatuses() {
+		//List<RoomData> latestRoomData = new ArrayList<RoomData>();
+		//roomRepository.findAll().forEach(room -> roomDataRepository.fin);
+		//roomRepository.findAll().stream().forEach(r -> roomDataRepository.findTopByOrderByRoom_id());
+		return "";
 	}
 }

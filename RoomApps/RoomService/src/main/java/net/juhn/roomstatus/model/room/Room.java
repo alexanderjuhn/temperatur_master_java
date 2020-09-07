@@ -1,8 +1,15 @@
 package net.juhn.roomstatus.model.room;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 /**
@@ -23,9 +30,6 @@ public class Room implements Serializable {
 
     @Column(name="NAME", nullable=false, length=32)
     private String name;
-
-    @OneToMany(mappedBy="room")
-    private List<RoomData> roomData;
 
     public Room() {
     }
@@ -49,27 +53,4 @@ public class Room implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    public List<RoomData> getRoomdata() {
-        return this.roomData;
-    }
-
-    public void setRoomdata(List<RoomData> roomdata) {
-        
-    }
-
-    public RoomData addRoomdata(RoomData roomdata) {
-        getRoomdata().add(roomdata);
-        roomdata.setRoom(this);
-
-        return roomdata;
-    }
-
-    public RoomData removeRoomdata(RoomData roomdata) {
-        getRoomdata().remove(roomdata);
-        roomdata.setRoom(null);
-
-        return roomdata;
-    }
-
 }
