@@ -3,3 +3,4 @@ RoomApps/RoomWorker/.settings/
 RoomApps/RoomService/.settings/
 RoomApps/RoomWorker/.classpath
 RoomApps/RoomWorker/.project
+*.pid

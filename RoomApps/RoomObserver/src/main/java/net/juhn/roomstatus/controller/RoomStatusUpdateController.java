@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import net.juhn.roomstatus.EnumRoomData;
 import net.juhn.roomstatus.model.room.RoomData;
 import net.juhn.roomstatus.repository.RoomDataRepository;
-import net.juhn.roomstatus.service.ServiceRoomData;
+import net.juhn.roomstatus.service.ServiceRoom;
 
 
 @RestController
@@ -27,7 +27,7 @@ public class RoomStatusUpdateController {
     private RoomDataRepository roomDataRepository;
     
     @Autowired
-    private ServiceRoomData serviceRoomData;
+    private ServiceRoom serviceRoom;
     
     private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
     
@@ -44,7 +44,7 @@ public class RoomStatusUpdateController {
         Float humidity = ((float)(int)(Float.parseFloat(body.get(EnumRoomData.humidity.toString()))*10))/10;
         Timestamp dateRecorded = formatDate(body.get(EnumRoomData.recordDate.toString()),body.get(EnumRoomData.recordTime.toString()));
 
-        serviceRoomData.updateRoom(roomName, temperature, humidity, dateRecorded);
+        serviceRoom.updateRoom(roomName, temperature, humidity, dateRecorded);
         
         return "";
     }

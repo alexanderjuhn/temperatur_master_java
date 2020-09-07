@@ -10,7 +10,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="\"ROOM\"")
+@Table(name="room",schema="statusdata")
 @NamedQuery(name="Room.findAll", query="SELECT r FROM Room r")
 public class Room implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -18,10 +18,10 @@ public class Room implements Serializable {
     @Id
     @SequenceGenerator(name="room_seq", initialValue=1, allocationSize=1 )
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="room_seq")
-    @Column(name="\"ID\"", unique=true, nullable=false)
+    @Column(name="ID", unique=true, nullable=false)
     private Long id;
 
-    @Column(name="\"NAME\"", nullable=false, length=32)
+    @Column(name="NAME", nullable=false, length=32)
     private String name;
 
     @OneToMany(mappedBy="room")
