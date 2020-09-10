@@ -1,17 +1,14 @@
-package net.juhn.roomworker;
+package net.juhn.roomobserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.ApplicationPidFileWriter;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories
-public class RoomStatusApplication {
-	
+public class RoomObserverApplication {
 
     public static void main(String[] args) {
-    	SpringApplication springApplication = new SpringApplication(RoomStatusApplication.class);
+    	SpringApplication springApplication = new SpringApplication(RoomObserverApplication.class);
     	springApplication.addListeners(new ApplicationPidFileWriter());
         springApplication.run(args);
     } 
