@@ -75,6 +75,11 @@ public class RoomStatusReporter {
 		return "";
 	}
 	
+	@GetMapping("/")
+	public String getStatus() {
+		return "Up and running!";
+	}
+	
 	@GetMapping("/getRoomStatusesLatest")
 	public String getRoomStatusesLatest() {
 		try {
