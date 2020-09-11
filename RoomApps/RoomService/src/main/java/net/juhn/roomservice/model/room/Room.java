@@ -1,4 +1,4 @@
-package net.juhn.roomstatus.model.room;
+package net.juhn.roomservice.model.room;
 
 import java.io.Serializable;
 

@@ -50,7 +50,7 @@ public class RoomScheduler {
 
 			Trigger trigger = TriggerBuilder.newTrigger()
 					.withSchedule(SimpleScheduleBuilder.simpleSchedule()
-							.withIntervalInSeconds(10)
+							.withIntervalInHours(1)
 							.repeatForever())
 					.build();
 

@@ -1,4 +1,4 @@
-package net.juhn.roomstatus.service;
+package net.juhn.roomservice.service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -9,10 +9,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.juhn.roomstatus.model.room.Room;
-import net.juhn.roomstatus.model.room.RoomData;
-import net.juhn.roomstatus.repository.RoomDataRepository;
-import net.juhn.roomstatus.repository.RoomRepository;
+import net.juhn.roomservice.model.room.Room;
+import net.juhn.roomservice.model.room.RoomData;
+import net.juhn.roomservice.repository.RoomDataRepository;
+import net.juhn.roomservice.repository.RoomRepository;
 
 /**
  * Service to handle everything related to room status.

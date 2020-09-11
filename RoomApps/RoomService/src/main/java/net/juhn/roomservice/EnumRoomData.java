@@ -1,4 +1,4 @@
-package net.juhn.roomstatus;
+package net.juhn.roomservice;
 
 public enum EnumRoomData {
     room,

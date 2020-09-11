@@ -1,4 +1,4 @@
-package net.juhn.roomstatus.repository;
+package net.juhn.roomservice.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import net.juhn.roomstatus.model.room.RoomData;
+import net.juhn.roomservice.model.room.RoomData;
 
 @Repository
 public interface RoomDataRepository extends CrudRepository<RoomData, Long>{

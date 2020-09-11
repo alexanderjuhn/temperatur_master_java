@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.juhn.roomstatus.EnumRoomData;
-import net.juhn.roomstatus.model.room.Room;
-import net.juhn.roomstatus.model.room.RoomData;
-import net.juhn.roomstatus.repository.RoomDataRepository;
-import net.juhn.roomstatus.repository.RoomRepository;
-import net.juhn.roomstatus.service.ServiceRoom;
+import net.juhn.roomservice.EnumRoomData;
+import net.juhn.roomservice.model.room.Room;
+import net.juhn.roomservice.model.room.RoomData;
+import net.juhn.roomservice.repository.RoomDataRepository;
+import net.juhn.roomservice.repository.RoomRepository;
+import net.juhn.roomservice.service.ServiceRoom;
 
 @RestController
 public class RoomStatusReporter {
