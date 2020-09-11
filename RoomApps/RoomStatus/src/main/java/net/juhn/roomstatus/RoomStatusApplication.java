@@ -8,9 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan("net.juhn.roomservice.service")
-@EnableJpaRepositories("net.juhn.roomservice.repository")
-@EntityScan("net.juhn.roomservice.model")
+@ComponentScan({"net.juhn.roomservice","net.juhn.roomstatus"})
+@EnableJpaRepositories({"net.juhn.roomservice","net.juhn.roomstatus"})
+@EntityScan({"net.juhn.roomservice","net.juhn.roomstatus"})
 public class RoomStatusApplication {
 
     public static void main(String[] args) {
