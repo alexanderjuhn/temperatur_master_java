@@ -82,7 +82,7 @@ public class RoomStatusReporter {
 		return "RoomStatus up and running!";
 	}
 	
-	@CrossOrigin
+	@CrossOrigin(origins = "*")
 	@GetMapping("/getRoomStatusesLatest")
 	public String getRoomStatusesLatest() {
 		try {
