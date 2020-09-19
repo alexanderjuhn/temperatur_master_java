@@ -11,23 +11,26 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@ComponentScan({"net.juhn.roomservice","net.juhn.roomstatus"})
-@EnableJpaRepositories({"net.juhn.roomservice","net.juhn.roomstatus"})
-@EntityScan({"net.juhn.roomservice","net.juhn.roomstatus"})
+@ComponentScan({ "net.juhn.roomservice", "net.juhn.roomstatus" })
+@EnableJpaRepositories({ "net.juhn.roomservice", "net.juhn.roomstatus" })
+@EntityScan({ "net.juhn.roomservice", "net.juhn.roomstatus" })
 public class RoomStatusApplication {
 
-    public static void main(String[] args) {
-    	SpringApplication springApplication = new SpringApplication(RoomStatusApplication.class);
-    	springApplication.addListeners(new ApplicationPidFileWriter());
-        springApplication.run(args);
-    } 
-    
-    @Bean
+	public static void main(String[] args) {
+		SpringApplication springApplication = new SpringApplication(RoomStatusApplication.class);
+		springApplication.addListeners(new ApplicationPidFileWriter());
+		springApplication.run(args);
+	}
+
+	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedHeaders("Content-Type", "Authorization");
+				registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedHeaders("Content-Type", "Authorization")
+						.allowedMethods("GET", "POST", "PUT", "HEAD", "DELETE", "PATCH", "OPTIONS");
 				System.out.println("Did the mapping stuff");
 			}
 		};
