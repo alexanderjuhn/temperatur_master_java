@@ -28,6 +28,7 @@ public class RoomStatusApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("*");
+				System.out.println("Did the mapping stuff");
 			}
 		};
 	}
