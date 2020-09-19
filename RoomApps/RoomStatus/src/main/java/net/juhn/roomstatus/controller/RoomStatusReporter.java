@@ -60,6 +60,7 @@ public class RoomStatusReporter {
 		return "";
 	}
 
+	@CrossOrigin
 	@GetMapping("/getRoomStatusesTotal")
 	public String getRoomStatusesTotal() {
 		try {
@@ -81,6 +82,7 @@ public class RoomStatusReporter {
 		return "RoomStatus up and running!";
 	}
 	
+	@CrossOrigin
 	@GetMapping("/getRoomStatusesLatest")
 	public String getRoomStatusesLatest() {
 		try {
