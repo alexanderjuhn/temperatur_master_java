@@ -3,6 +3,7 @@ package net.juhn.roomservice.service;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,10 @@ public class ServiceRoom {
 	 * @param dateRecorded Date/Time the data was recorded
 	 */
 	public void updateRoom(String roomName, Float temperature, Float humidity, Timestamp dateRecorded) {
-		Room room = getRoom(roomName);
+		if(roomName.isEmpty()) {
+			return;
+		}
+		Room room = getRoom(roomName).orElse(createRoom(roomName));
 
 		RoomData roomData = new RoomData();
 		roomData.setTemperature(temperature);
@@ -58,7 +62,11 @@ public class ServiceRoom {
 	 * @param roomName Room name
 	 * @return Room
 	 */
-	private Room getRoom(String roomName) {
+	private Optional<Room> getRoom(String roomName) {
+		return roomRepository.findByName(roomName);
+	}
+	
+	private Room createRoom(String roomName) {
 		Optional<Room> room = roomRepository.findByName(roomName);
 		if (room.isPresent()) {
 			return room.get();
@@ -80,10 +88,16 @@ public class ServiceRoom {
 		.forEach(rd -> roomDataRepository.delete(rd));
 	}
 	
-	public String getRoomStatuses() {
-		//List<RoomData> latestRoomData = new ArrayList<RoomData>();
-		//roomRepository.findAll().forEach(room -> roomDataRepository.fin);
-		//roomRepository.findAll().stream().forEach(r -> roomDataRepository.findTopByOrderByRoom_id());
-		return "";
+	/**
+	 * Get all available roomData for a given room.
+	 * @param roomName Room Name
+	 * @return List of all available room data
+	 */
+	public List<RoomData> getRoomStatusGraphByName(String roomName) {
+		List<RoomData> roomData=new ArrayList<RoomData>();
+		getRoom(roomName).ifPresent(r -> {
+			roomData.addAll(roomDataRepository.findAllByRoom_idOrderByDatecreatedDesc(r.getId()));
+		});
+		return roomData;
 	}
 }

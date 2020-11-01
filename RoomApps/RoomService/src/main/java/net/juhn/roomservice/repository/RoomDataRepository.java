@@ -15,4 +15,6 @@ public interface RoomDataRepository extends CrudRepository<RoomData, Long>{
 	//List<RoomData> findFirstByOrderByDatecreatedDesc();
 	
 	Optional<RoomData> findFirstByRoom_idOrderByDatecreatedDesc(long room_id);
+	
+	List<RoomData> findAllByRoom_idOrderByDatecreatedDesc(long room_id);
 }

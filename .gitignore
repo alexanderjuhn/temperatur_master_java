@@ -1,5 +1,6 @@
-RoomApps/.settings/
+RoomApps/.settings/*
 RoomApps/.project
+RoomApps/.classpath
 RoomApps/RoomWorker/.settings/
 RoomApps/RoomService/.settings/
 RoomApps/RoomWorker/.classpath
@@ -9,6 +10,11 @@ RoomApps/RoomStatus/.classpath
 RoomApps/RoomStatus/.project
 RoomApps/RoomStatus/.settings/
 RoomApps/RoomStatus/target/
-*.classpath
-*.project
-*.settings/
+.classpath
+.project
+.settings/
+bin/
+.classpath
+.project
+.settings
+target
