@@ -14,4 +14,5 @@ build:
     - pwd
     - ls -l
     - cd RoomApps
+    - ls
     - mvn install 
