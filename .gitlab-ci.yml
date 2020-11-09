@@ -13,4 +13,5 @@ build:
   script:
     - pwd
     - ls -l
-    - mvn install ./RoomApps
+    - cd RoomApps
+    - mvn install 
