@@ -17,4 +17,4 @@ build:
     - ls
     - mvn install 
     - cd RoomStatus
-    - sudo docker build -t ***REMOVED***:9002/roomstatus .
+    - docker build -t ***REMOVED***:9002/roomstatus .
