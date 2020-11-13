@@ -18,3 +18,5 @@ build:
     - mvn install 
     - cd RoomStatus
     - docker build -t ***REMOVED***:9002/roomstatus .
+    - docker login ***REMOVED***:9002 -u sascha -p ***REMOVED***
+    - docker push ***REMOVED***:9002/roomstatus
