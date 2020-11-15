@@ -14,7 +14,6 @@ RoomApps/RoomStatus/target/
 .project
 .settings/
 bin/
-.classpath
-.project
 .settings
 target
+*.eclipse.jdt.core.prefs
