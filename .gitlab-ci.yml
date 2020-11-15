@@ -16,7 +16,6 @@ build:
     - cd RoomApps
     - ls
     - mvn install 
-    - cd RoomStatus
     - docker build -t ***REMOVED***:9002/roomstatus ./RoomStatus
     - docker build -t ***REMOVED***:9002/roomstatus ./RoomWorker
     - docker build -t ***REMOVED***:9002/roomstatus ./RoomObserver
