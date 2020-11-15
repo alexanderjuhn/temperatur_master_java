@@ -1,5 +1,5 @@
 FROM ***REMOVED***:9002/openjdk-11-alpine
-ARG JAR_FILE=target/RoomObserver-spring-boot.jar
+ARG JAR_FILE=target/RoomWorker-spring-boot.jar
 COPY ${JAR_FILE} app.jar
 ENV PATH "$PATH:/opt/openjdk/bin"
 ENTRYPOINT ["java","-jar","/app.jar"]
