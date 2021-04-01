@@ -10,6 +10,10 @@ RoomApps/RoomStatus/.classpath
 RoomApps/RoomStatus/.project
 RoomApps/RoomStatus/.settings/
 RoomApps/RoomStatus/target/
+RoomApps/RoomObserver/.classpath
+RoomApps/RoomObserver/.project
+RoomApps/RoomObserver/.settings/
+RoomApps/RoomObserver/target/
 .classpath
 .project
 .settings/
