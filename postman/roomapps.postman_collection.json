@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "7b780140-b5da-4c0b-a703-22e557a63ba5",
+		"name": "RoomApps",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Is Observer Up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"RoomObserver up and running!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:{{portObserver}}/",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{portObserver}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Is Worker Up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"RoomWorker up and running!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:{{portWorker}}/",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{portWorker}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Is Status Reporter Up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"RoomStatus up and running!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:{{portStatus}}/",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{portStatus}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Report to Observer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"room\":\"Draußen\", \n    \"temperatur\":\"99.9\", \n    \"humidity\":\"30.5\", \n    \"recordDate\":\"\", \n    \"recordTime\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostname}}:{{portObserver}}/reportRoom",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{portObserver}}",
+					"path": [
+						"reportRoom"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLatest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"datecreated\");",
+							"    pm.expect(pm.response.text()).to.include(\"humidity\");",
+							"    pm.expect(pm.response.text()).to.include(\"temperature\");",
+							"    pm.expect(pm.response.text()).to.include(\"room\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://***REMOVED***:30083/getRoomStatusesLatest",
+					"protocol": "http",
+					"host": [
+						"***REMOVED***"
+					],
+					"port": "30083",
+					"path": [
+						"getRoomStatusesLatest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
