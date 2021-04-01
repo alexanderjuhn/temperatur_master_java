@@ -39,27 +39,7 @@ public class RoomStatusReporter {
 	@Autowired
 	private ServiceRoom serviceRoom;
 
-	private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
-	/**
-	 * Entry point to report room status data
-	 * 
-	 * @param body Request body
-	 * @return empty String
-	 */
-	@PostMapping(path = "/reportRoom")
-	public String reportRoom(@RequestBody Map<String, String> body) {
-
-		String roomName = body.get(EnumRoomData.room.name());
-		Float temperature = ((float) (int) (Float.parseFloat(body.get(EnumRoomData.temperatur.name())) * 10)) / 10;
-		Float humidity = ((float) (int) (Float.parseFloat(body.get(EnumRoomData.humidity.toString())) * 10)) / 10;
-		Timestamp dateRecorded = formatDate(body.get(EnumRoomData.recordDate.toString()),
-				body.get(EnumRoomData.recordTime.toString()));
-
-		serviceRoom.updateRoom(roomName, temperature, humidity, dateRecorded);
-
-		return "";
-	}
 
 	@CrossOrigin
 	@GetMapping("/getRoomStatusesTotal")
@@ -113,13 +93,5 @@ public class RoomStatusReporter {
 			e.printStackTrace();
 		}
 		return "";
-	}
-
-	private Timestamp formatDate(String recordDate, String recordTime) {
-		try {
-			return new Timestamp(formatter.parse(recordDate + " " + recordTime).getTime());
-		} catch (ParseException e) {
-			return new Timestamp(System.currentTimeMillis());
-		}
 	}
 }
