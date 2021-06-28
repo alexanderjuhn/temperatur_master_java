@@ -1,6 +1,6 @@
-flyway.url=jdbc:postgresql://***REMOVED***:5432/statusdb
+flyway.url=jdbc:postgresql://localhost:5432/mydb
 flyway.user=postgres
-flyway.password=***REMOVED***
+flyway.password=password
 flyway.schemas=statusdata
 
 flyway.locations=filesystem:src/migration/

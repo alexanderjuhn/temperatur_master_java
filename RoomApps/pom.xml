@@ -31,5 +31,6 @@
 		<module>RoomObserver</module>
 		<module>RoomWorker</module>
 		<module>RoomStatus</module>
+		<module>database</module>
 	</modules>
 </project>
