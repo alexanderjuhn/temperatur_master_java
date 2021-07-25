@@ -7,3 +7,6 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 spring.pid.fail-on-write-error=true
 spring.pid.file=./pid
+management.health.livenessstate.enabled=false
+management.health.readinessstate.enabled=false
+management.endpoint.health.probes.enabled=false
