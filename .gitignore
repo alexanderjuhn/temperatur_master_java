@@ -21,3 +21,6 @@ bin/
 .settings
 target
 *.eclipse.jdt.core.prefs
+RoomApps/RoomStatus/pid
+RoomApps/RoomObserver/src/main/resources/application.properties
+RoomApps/RoomWorker/pid

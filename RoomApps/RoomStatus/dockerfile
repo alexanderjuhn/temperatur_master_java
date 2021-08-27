@@ -2,4 +2,4 @@ FROM ***REMOVED***:9002/openjdk-11-alpine
 ARG JAR_FILE=target/RoomStatus-spring-boot.jar
 COPY ${JAR_FILE} app.jar
 ENV PATH "$PATH:/opt/openjdk/bin"
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar","--spring.config.location=classpath:/workspace/config/application.properties"]
