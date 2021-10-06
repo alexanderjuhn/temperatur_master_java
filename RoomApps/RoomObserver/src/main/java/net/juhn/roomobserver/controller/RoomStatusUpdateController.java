@@ -37,6 +37,7 @@ public class RoomStatusUpdateController {
         Float humidity = ((float)(int)(Float.parseFloat(body.get(EnumRoomData.humidity.toString()))*10))/10;
         Timestamp dateRecorded = formatDate(body.get(EnumRoomData.recordDate.toString()),body.get(EnumRoomData.recordTime.toString()));
 
+        System.out.println(roomName + " : "+ temperature + " : "+  humidity + " : "+  dateRecorded);
         serviceRoom.updateRoom(roomName, temperature, humidity, dateRecorded);
         
         return "";
@@ -52,6 +53,7 @@ public class RoomStatusUpdateController {
     
 	@GetMapping("/")
 	public String getStatus() {
+		System.out.println("Status requested");
 		return "RoomObserver up and running!";
 	}
 }
