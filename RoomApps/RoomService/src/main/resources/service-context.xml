@@ -34,7 +34,7 @@
 		<property name="driverClassName"
 			value="org.postgresql.Driver" />
 		<property name="url"
-			value="jdbc:postgresql://local-mini:5432/statusdb?currentSchema=statusdata" />
+			value="jdbc:postgresql://localhost:5432/statusdb?currentSchema=statusdata" />
 		<property name="username" value="postgres" />
 		<property name="password" value="Password-1" />
 	</bean>
