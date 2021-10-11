@@ -1,4 +1,4 @@
-FROM ***REMOVED***:9002/openjdk-11-alpine
+FROM local-mini:9002/openjdk-11-alpine
 ARG JAR_FILE=target/RoomStatus-spring-boot.jar
 COPY ${JAR_FILE} app.jar
 ENV PATH "$PATH:/opt/openjdk/bin"

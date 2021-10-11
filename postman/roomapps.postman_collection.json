@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "hostname",
-			"value": "***REMOVED***",
+			"value": "local-pi1",
 			"enabled": true
 		},
 		{
