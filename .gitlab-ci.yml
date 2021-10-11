@@ -16,7 +16,7 @@ build:
     - cd RoomApps
     - ls
     - mvn install
-    - docker login localhost:9002 -u sascha -p ***REMOVED***
+    - docker login localhost:9002 -u sascha -p Password-1
     - docker build -t localhost:9002/roomstatus RoomStatus
     - docker build -t localhost:9002/roomworker RoomWorker
     - docker build -t localhost:9002/roomobserver RoomObserver
