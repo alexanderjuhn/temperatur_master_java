@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,9 @@ public class RoomStatusUpdateController {
     private ServiceRoom serviceRoom;
     
     private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    
+    @Value("${spring.datasource.url}")
+    String datasource;
     
     /**
      * Entry point to report room status data
@@ -54,6 +58,6 @@ public class RoomStatusUpdateController {
 	@GetMapping("/")
 	public String getStatus() {
 		System.out.println("Status requested");
-		return "RoomObserver up and running!";
+		return "RoomObserver up and running!  Reporting to "+datasource;
 	}
 }
