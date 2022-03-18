@@ -24,3 +24,4 @@ target
 RoomApps/RoomStatus/pid
 RoomApps/RoomObserver/src/main/resources/application.properties
 RoomApps/RoomWorker/pid
+RoomApps/RoomObserver/pid
