@@ -6,6 +6,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +31,8 @@ public class RoomStatusUpdateController {
     @Value("${spring.datasource.url}")
     String datasource;
     
+    Logger logger = LogManager.getLogger(RoomStatusUpdateController.class);
+    
     /**
      * Entry point to report room status data
      * @param body Request body
@@ -40,7 +45,8 @@ public class RoomStatusUpdateController {
         Float temperature = ((float)(int)(Float.parseFloat(body.get(EnumRoomData.temperatur.name()))*10))/10;
         Float humidity = ((float)(int)(Float.parseFloat(body.get(EnumRoomData.humidity.toString()))*10))/10;
         Timestamp dateRecorded = formatDate(body.get(EnumRoomData.recordDate.toString()),body.get(EnumRoomData.recordTime.toString()));
-
+        
+        logger.log(Level.INFO, "report: "+roomName + " : "+ temperature + " : "+  humidity + " : "+  dateRecorded);
         System.out.println(roomName + " : "+ temperature + " : "+  humidity + " : "+  dateRecorded);
         serviceRoom.updateRoom(roomName, temperature, humidity, dateRecorded);
         
@@ -58,6 +64,8 @@ public class RoomStatusUpdateController {
 	@GetMapping("/")
 	public String getStatus() {
 		System.out.println("Status requested");
+		logger.log(Level.INFO, "I'm a logger");
+		
 		return "RoomObserver up and running!  Reporting to "+datasource;
 	}
 }
