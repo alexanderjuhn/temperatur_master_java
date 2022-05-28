@@ -1,2 +1,2 @@
 FROM local-mini:9002/spring_boot_base:0.1
-COPY ${JAR_FILE} app.jar
+COPY target/RoomObserver-spring-boot.jar app.jar
