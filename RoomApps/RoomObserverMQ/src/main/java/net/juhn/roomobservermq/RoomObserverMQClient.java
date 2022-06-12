@@ -64,7 +64,8 @@ public class RoomObserverMQClient implements CommandLineRunner{
 		
 		SpringApplication springApplication = new SpringApplication(RoomObserverMQClient.class);
     	springApplication.addListeners(new ApplicationPidFileWriter());
-    	springApplication.setWebApplicationType(WebApplicationType.NONE);
+    	// Webserver has to stay enabled to access Prometheus endpoint
+    	//springApplication.setWebApplicationType(WebApplicationType.NONE);
         springApplication.run(args);
 
 	}
