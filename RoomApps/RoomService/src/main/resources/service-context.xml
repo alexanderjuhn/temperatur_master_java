@@ -17,7 +17,8 @@
 	<context:component-scan
 		base-package="net.juhn.roomservice.service" />
 	<jpa:repositories base-package="net.juhn.roomservice" />
-	<context:property-placeholder location="classpath:application.properties" />
+	<context:property-placeholder location="classpath:application.properties" ignore-resource-not-found="true" />
+	<context:property-placeholder location="/workspaces/config/application.properties" ignore-resource-not-found="true"/>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
