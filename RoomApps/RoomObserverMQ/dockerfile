@@ -1,0 +1,2 @@
+FROM local-mini:9002/spring_boot_base:0.3
+COPY target/RoomObserverMQ-1.0.jar app.jar

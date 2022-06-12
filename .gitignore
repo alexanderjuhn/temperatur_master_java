@@ -25,3 +25,5 @@ RoomApps/RoomStatus/pid
 RoomApps/RoomObserver/src/main/resources/application.properties
 RoomApps/RoomWorker/pid
 RoomApps/RoomObserver/pid
+RoomApps/RoomObserverMQ/pid
+RoomApps/RoomObserverMQ/src/main/resources/application.properties
