@@ -13,6 +13,7 @@ import java.util.concurrent.TimeoutException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -36,29 +37,28 @@ import net.juhn.roomservice.service.ServiceRoom;
 @EnableJpaRepositories({ "net.juhn.roomservice", "net.juhn.roomobservermq" })
 @EntityScan({ "net.juhn.roomservice", "net.juhn.roomobservermq" })
 public class RoomObserverMQClient implements CommandLineRunner{
-	private Properties properties;
 
 	@Autowired
 	private ServiceRoom serviceRoom;
+	
+	@Value("${rabbitmq.queue_name}")
+    String queue_name;
+	
+	@Value("${rabbitmq.host_name}")
+    String host_name;
+	
+	@Value("${rabbitmq.port}")
+    int port;
+	
+	@Value("${rabbitmq.username}")
+    String username;
+	
+	@Value("${rabbitmq.password}")
+    String password;
 
 	private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
 	Logger logger = LogManager.getLogger(RoomObserverMQClient.class);
-
-	public RoomObserverMQClient() {
-		Properties prop = new Properties();
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		InputStream stream = loader.getResourceAsStream("application.properties");
-		try {
-			prop.load(stream);
-			this.properties = prop;
-		} catch (IOException e) {
-			this.properties = null;
-			logger.error("Properties not found.");
-			System.exit(1);
-		}
-		
-	}
 
 	public static void main(String args[]) throws Exception {
 		
@@ -75,7 +75,6 @@ public class RoomObserverMQClient implements CommandLineRunner{
 
 	private void receive() throws Exception {
 
-		String queue_name = properties.getProperty("rabbitmq.queue_name");
 		Channel channel =  buildChannel(queue_name);
 		
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
@@ -104,15 +103,15 @@ public class RoomObserverMQClient implements CommandLineRunner{
 	private Channel buildChannel(String queue_name) throws IOException, TimeoutException {
 		ConnectionFactory factory = new ConnectionFactory();
 
-		factory.setHost(properties.getProperty("rabbitmq.host_name"));
-		factory.setPort(Integer.parseInt(properties.getProperty("rabbitmq.port")));
-		factory.setUsername(properties.getProperty("rabbitmq.username"));
-		factory.setPassword(properties.getProperty("rabbitmq.password"));
+		factory.setHost(this.host_name);
+		factory.setPort(this.port);
+		factory.setUsername(this.username);
+		factory.setPassword(this.password);
 		
 		Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel();
 
-		channel.queueDeclare(queue_name, true, false, false, null);
+		channel.queueDeclare(this.queue_name, true, false, false, null);
 		
 		return channel;
 	}
