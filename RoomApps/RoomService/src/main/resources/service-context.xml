@@ -17,6 +17,7 @@
 	<context:component-scan
 		base-package="net.juhn.roomservice.service" />
 	<jpa:repositories base-package="net.juhn.roomservice" />
+	<context:property-placeholder location="classpath:application.properties" />
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -34,9 +35,9 @@
 		<property name="driverClassName"
 			value="org.postgresql.Driver" />
 		<property name="url"
-			value="jdbc:postgresql://localhost:5432/statusdb?currentSchema=statusdata" />
-		<property name="username" value="postgres" />
-		<property name="password" value="password" />
+			value="${spring.datasource.url}" />
+		<property name="username" value="${spring.datasource.username}" />
+		<property name="password" value="${spring.datasource.password}" />
 	</bean>
 
 	<bean id="transactionManager"
