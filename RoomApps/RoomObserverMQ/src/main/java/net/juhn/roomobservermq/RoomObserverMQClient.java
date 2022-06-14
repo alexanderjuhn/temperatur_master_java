@@ -82,7 +82,7 @@ public class RoomObserverMQClient implements CommandLineRunner{
 			String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
 			try {
 				JSONObject jsonObject = new JSONObject(message);
-				String room=jsonObject.getString("room")+" 1";
+				String room=jsonObject.getString("room");
 				float temperatur=(float)jsonObject.getDouble("temperatur");
 				float humidity=(float)jsonObject.getDouble("humidity");
 				Timestamp dateRecorded = formatDate(jsonObject.getString("recordDate"),jsonObject.getString("recordTime"));
