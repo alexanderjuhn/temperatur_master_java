@@ -19,7 +19,7 @@ public class MetricLastCleaning implements Supplier{
 	
 	@Override
 	public Object get() {
-		return (Instant.now().toEpochMilli()-serviceRoom.getLastCleaning());
+		return ((Instant.now().toEpochMilli()/1000)-serviceRoom.getLastCleaning());
 	}
 
 }
