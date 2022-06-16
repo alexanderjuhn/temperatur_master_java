@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +33,11 @@ public class ServiceRoom {
 
 	@Autowired
 	private RoomDataRepository roomDataRepository;
+	
+	Logger logger = LogManager.getLogger(ServiceRoom.class);
+	
+	private static int deletedDataRecords = 0;
+	private static long lastCleaning = 0;
 
 	/**
 	 * Insert room data into the database
@@ -74,18 +81,25 @@ public class ServiceRoom {
 			return room.orElse(roomRepository.save(new Room(roomName)));
 		}
 	}
-
+	
 	/**
 	 * Delete room data that is older then a certain amount of days.
 	 */
 	public void cleanRoom() {
 		List<RoomData> roomData = roomDataRepository.findAll();
-
+		deletedDataRecords = 0;
+		
+		logger.info("Attemting to delete old data.");
 		roomData.stream()
 		.filter(rd -> rd.getDatecreated()
 				.before(Timestamp.from(Instant.now()
 						.minus(DAYS_TO_KEEP_DATA, ChronoUnit.DAYS))))
-		.forEach(rd -> roomDataRepository.delete(rd));
+		.forEach(rd -> {
+			roomDataRepository.delete(rd);
+			deletedDataRecords++;
+		});
+		lastCleaning = Instant.now().toEpochMilli();
+		logger.info("Deleted " + deletedDataRecords + " records.");
 	}
 	
 	/**
@@ -99,5 +113,13 @@ public class ServiceRoom {
 			roomData.addAll(roomDataRepository.findAllByRoom_idOrderByDatecreatedDesc(r.getId()));
 		});
 		return roomData;
+	}
+	
+	public int getDeletedDataRecords() {
+		return deletedDataRecords;
+	}
+	
+	public long getLastCleaning() {
+		return lastCleaning;
 	}
 }
