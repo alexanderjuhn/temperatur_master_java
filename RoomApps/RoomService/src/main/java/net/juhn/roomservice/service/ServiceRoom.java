@@ -120,6 +120,6 @@ public class ServiceRoom {
 	}
 	
 	public long getLastCleaning() {
-		return lastCleaning;
+		return lastCleaning/1000;
 	}
 }
