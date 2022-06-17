@@ -71,8 +71,7 @@ public class RoomObserverMQClient implements CommandLineRunner{
 	}
 	
 	public void run(String... args) throws Exception{
-		while(true)
-			receive();
+		receive();
 	}
 
 	private void receive() throws Exception {
@@ -91,12 +90,20 @@ public class RoomObserverMQClient implements CommandLineRunner{
 				logger.info(" [x] Received '" + message + "'");
 			} catch (JSONException e) {
 				e.printStackTrace();
+				// @TODO fix error handling
+				try {
+					receive();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 
 		};
 		channel.basicConsume(queue_name, true, deliverCallback, consumerTag -> {
 		});
 		logger.error("Error. Restarting");
+		
 
 	}
 
