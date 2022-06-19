@@ -1,4 +1,4 @@
- name: Build Docker Temperature Backend
+name: Build Docker Temperature Backend
 on: [push]
 jobs:
   Build_Backend:
