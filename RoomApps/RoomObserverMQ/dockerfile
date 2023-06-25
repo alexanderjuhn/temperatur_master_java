@@ -1,2 +1,3 @@
-FROM local-mini:5000/spring_boot_base:0.3
+FROM adoptopenjdk/openjdk11
 COPY target/RoomObserverMQ-spring-boot.jar app.jar
+CMD ["java", "-jar", "/app.jar"]
