@@ -94,7 +94,7 @@ public class RoomObserverMQClient implements CommandLineRunner{
 				try {
 					dateRecorded = formatDate(jsonObject.getString("recordDate"), jsonObject.getString("recordTime"));
 				} catch (Exception e){
-					dateRecorded = new Tim1estamp(System.currentTimeMillis());
+					dateRecorded = new Timestamp(System.currentTimeMillis());
 				}
 				serviceRoom.updateRoom(room, temperatur, humidity, dateRecorded);
 				logger.info(" [x] Received '" + message + "'");
