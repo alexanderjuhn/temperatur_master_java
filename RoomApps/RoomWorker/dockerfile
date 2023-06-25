@@ -1,2 +1,2 @@
-FROM local-mini:9002/spring_boot_base:0.3
+FROM local-mini:5000/spring_boot_base:0.3
 COPY target/RoomWorker-spring-boot.jar app.jar
