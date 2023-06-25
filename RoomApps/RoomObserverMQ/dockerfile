@@ -1,3 +1,3 @@
-FROM adoptopenjdk/openjdk11
+FROM adoptopenjdk/openjdk11:armv7l-ubuntu-jre-11.0.19_7
 COPY target/RoomObserverMQ-spring-boot.jar app.jar
 CMD ["java", "-jar", "/app.jar"]
