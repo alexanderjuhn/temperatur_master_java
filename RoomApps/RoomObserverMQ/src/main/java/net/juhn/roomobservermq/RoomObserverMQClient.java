@@ -88,7 +88,7 @@ public class RoomObserverMQClient implements CommandLineRunner{
 				try {
 					humidity = (float) jsonObject.getDouble("humidity");
 				}catch (Exception e){
-					humidity = 0
+					humidity = 0;
 				}
 				Timestamp dateRecorded;
 				try {
