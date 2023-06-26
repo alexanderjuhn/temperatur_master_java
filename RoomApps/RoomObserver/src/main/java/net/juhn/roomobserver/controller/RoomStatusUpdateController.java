@@ -48,7 +48,7 @@ public class RoomStatusUpdateController {
         
         logger.log(Level.INFO, "report: "+roomName + " : "+ temperature + " : "+  humidity + " : "+  dateRecorded);
         System.out.println(roomName + " : "+ temperature + " : "+  humidity + " : "+  dateRecorded);
-        serviceRoom.updateRoom(roomName, temperature, humidity, dateRecorded);
+        serviceRoom.updateRoom(roomName, temperature, humidity, dateRecorded,0);
         
         return "";
     }

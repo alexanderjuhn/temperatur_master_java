@@ -47,7 +47,7 @@ public class ServiceRoom {
 	 * @param humidity     Humidity
 	 * @param dateRecorded Date/Time the data was recorded
 	 */
-	public void updateRoom(String roomName, Float temperature, Float humidity, Timestamp dateRecorded) {
+	public void updateRoom(String roomName, Float temperature, Float humidity, Timestamp dateRecorded, long pressure) {
 		if(roomName.isEmpty()) {
 			return;
 		}
@@ -57,6 +57,7 @@ public class ServiceRoom {
 		roomData.setTemperature(temperature);
 		roomData.setHumidity(humidity);
 		roomData.setDatecreated(dateRecorded);
+		roomData.setPressure(pressure);
 
 		roomData.setRoom(room);
 		roomDataRepository.save(roomData);

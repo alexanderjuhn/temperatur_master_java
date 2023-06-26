@@ -84,19 +84,29 @@ public class RoomObserverMQClient implements CommandLineRunner{
 				JSONObject jsonObject = new JSONObject(message);
 				String room=jsonObject.getString("room");
 				float temperatur=(float)jsonObject.getDouble("temperatur");
-				float humidity;
+				float humidity = 0;
 				try {
 					humidity = (float) jsonObject.getDouble("humidity");
-				}catch (Exception e){
-					humidity = 0;
+				} catch (JSONException e) {
+					// Value is not available on nodes without a humidity sensors (ex. BMP180). Keep the value at 0 then.
 				}
+				
+				long pressure=0;
+				try {
+					pressure = jsonObject.getLong("pressure");
+				} catch (JSONException e) {
+					// Value is not available on nodes without a pressure sensors (ex. DHT22). Keep the value at 0 then.
+				}
+				
+				
 				Timestamp dateRecorded;
 				try {
 					dateRecorded = formatDate(jsonObject.getString("recordDate"), jsonObject.getString("recordTime"));
 				} catch (Exception e){
+					// Value is not available on ESP32. Set the current time then.
 					dateRecorded = new Timestamp(System.currentTimeMillis());
 				}
-				serviceRoom.updateRoom(room, temperatur, humidity, dateRecorded);
+				serviceRoom.updateRoom(room, temperatur, humidity, dateRecorded, pressure);
 				logger.info(" [x] Received '" + message + "'");
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -132,6 +142,7 @@ public class RoomObserverMQClient implements CommandLineRunner{
 		Channel channel = connection.createChannel();
 
 		channel.queueDeclare(this.queue_name, true, false, false, null);
+		channel.queueBind(this.queue_name, "amq.topic", "#");
 		
 		return channel;
 	}

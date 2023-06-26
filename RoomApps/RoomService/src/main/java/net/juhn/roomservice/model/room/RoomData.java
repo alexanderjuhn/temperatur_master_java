@@ -38,6 +38,9 @@ public class RoomData implements Serializable {
 
 	@Column(name = "TEMPERATURE")
 	private double temperature;
+	
+	@Column(name= "PRESSURE")
+	private long pressure;
 
 	@ManyToOne
 	@JoinColumn(name = "ROOM_ID")
@@ -84,6 +87,14 @@ public class RoomData implements Serializable {
 
 	public void setRoom(Room room) {
 		this.room = room;
+	}
+	
+	public long getPressure() {
+		return pressure;
+	}
+
+	public void setPressure(long pressure) {
+		this.pressure = pressure;
 	}
 
 	public String toString() {
