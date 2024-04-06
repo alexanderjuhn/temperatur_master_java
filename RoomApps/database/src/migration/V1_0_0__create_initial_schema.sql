@@ -1,7 +1,8 @@
 CREATE TABLE statusdata.room (
 	id int4 NOT NULL,
 	"name" varchar(32) NOT NULL,
-	CONSTRAINT room_pk PRIMARY KEY (id)
+	CONSTRAINT room_pk PRIMARY KEY (id),
+	CONSTRAINT room_pk_2 UNIQUE ("name")
 );
 
 
